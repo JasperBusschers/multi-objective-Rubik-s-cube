@@ -20,7 +20,8 @@ class DeepQNetwork(nn.Module):
         self.cuda()
 
     def forward(self,observation):
-        x = T.Tensor(np.reshape(observation, (1,1,6, 9))).cuda()
+        observation = T.Tensor(observation).cuda()
+        x = observation.view(-1, 1, 6, 9)
         x = F.relu(self.conv1(x))
         x = F.relu(self.conv2(x))
         x = F.relu(self.conv3(x))

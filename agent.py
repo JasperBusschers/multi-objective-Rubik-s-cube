@@ -4,9 +4,10 @@ from model import DeepQNetwork
 
 
 class agent():
-    def __init__(self,gamma,epsilon, alpha , maxMemSize, epsEnd, replace= 1000, actionSpace = [0,1,2,3,4,5,6,7,8,9,10]):
+    def __init__(self,gamma,epsilon, alpha , maxMemSize, epsEnd, replace= 25000, actionSpace = [0,1,2,3,4,5,6,7,8,9,10]):
         self.Q_values = np.zeros([9,6,11]) #state size 9
         self.GAMMA = gamma
+        self.ALPHA = alpha
         self.EPSILON = epsilon
         self.EPS_END = epsEnd
         self.actionSpace = actionSpace
@@ -28,6 +29,24 @@ class agent():
             self.memory[self.memCntr%self.memSize] = [state,action,reward,nextState]
         self.memCntr += 1
 
+    def load_memory(self, batch_size):
+        if self.memCntr + batch_size < self.memSize:
+            memStart = int(np.random.choice((range(self.memCntr))))
+        else:
+            memStart = int(np.random.choice(range(self.memCntr-batch_size)))
+        minibatch = self.memory[memStart:memStart+batch_size]
+        resCurrent = np.zeros([batch_size, 54])
+        resNext = np.zeros([batch_size, 54])
+        rewards = np.zeros([batch_size])
+        i=0
+        for state,action,reward,nextState in minibatch:
+            resCurrent[i,:] = state
+            resNext[i,:] = nextState
+            rewards[i] = reward
+            i += 1
+        return resCurrent , resNext, rewards
+
+
 
     def chooseAction(self,observation):
         rand = np.random.random()
@@ -35,7 +54,7 @@ class agent():
         if rand < 1- self.EPSILON:
             action = T.argmax(actions)
         else:
-            action = np.random.choice(actions)
+            action = np.random.choice(self.actionSpace)
         self.steps +=1
         return action
 
@@ -45,18 +64,12 @@ class agent():
             self.learn_step_counter % self.replace_target_cnt ==0:
             self.Q_next.load_state_dict(self.Q_eval.state_dict())
 
-        if self.memCntr + batch_size < self.memSize:
-            memStart = int(np.random.choice((range(self.memCntr))))
-        else:
-            memStart = int(np.random.choice(range(self.memCntr-batch_size)))
-        minibatch = self.memory[memStart:memStart+batch_size]
-        memory = np.array(minibatch)
 
-        Qpred = self.Q_eval.forward(list(memory[:,0]))
-        Qnext = self.Q_next.forward(list(memory[:,3][:]))
-
+        Qpred ,Qnext, rewards  = self.load_memory(batch_size)
+        Qpred = self.Q_eval.forward(Qpred)
+        Qnext = self.Q_next.forward(Qnext)
         maxA = T.argmax(Qnext,dim=1).cuda()
-        rewards = T.Tensor(list(memory[:,2])).cuda()
+        rewards = T.Tensor(rewards).cuda()
         Qtarget = Qpred
         Qtarget[:,maxA]= rewards + self.GAMMA*T.max(Qnext[1])
 
@@ -66,5 +79,3 @@ class agent():
         loss.backward()
         self.Q_eval.optimizer.step()
         self.learn_step_counter += 1
-
-ag = agent()

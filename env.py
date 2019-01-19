@@ -6,14 +6,15 @@ from model import DeepQNetwork
 
 
 class rubik():
-    def __init__(self):
+    def __init__(self, max_steps):
         self.env = gym.make("RubiksCube-v0")
+        self.max_steps = max_steps
         self.state = self.env.reset()
-        self.env.render()
         self.goal_face = 0
         self.goal_color = 0
         self.max = 0
-        #self.shuffle()
+        self.steps = 0
+        self.shuffle()
 
 
     def get_face(self, i):  # 0 = middle
@@ -25,8 +26,7 @@ class rubik():
         for x in goal_face:
             if int(x)==  self.goal_color:
                 i += 1
-        self.max = np.max([i, self.max])
-        return i - self.max
+        return i
 
 
     def done(self):
@@ -39,7 +39,8 @@ class rubik():
             return True
         else:
             return False
-
+    def render(self):
+        self.env.render()
 
     def shuffle(self):
         for i in range(0, 100):
@@ -50,18 +51,12 @@ class rubik():
     def step(self,move):
         self.env.step(move)
         self.state = self.env.reset()
-        reward = self.get_reward()
-        done = self.done()
-        observation = self.get_face(self.goal_face)
-        self.env.render()
-        return reward,self.state,done
-
-import numpy as np
-game = rubik()
-print(game.get_face(0))
-r,o,d= game.step(2)
-print(o)
-B = np.reshape(o, (6, 9,1))
-print(B.shape)
-network = DeepQNetwork(alpha=0.1)
-print(network(o))
+        reward = -1
+        completed = self.done()
+        done = completed
+        self.steps += 1
+        if self.steps >= self.max_steps or done:
+            reward = self.get_reward() * 1500
+            done = True
+        self.state = self.env.reset()
+        return self.state,reward, done , completed
