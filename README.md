@@ -22,3 +22,4 @@ Then I train an new agent using generative adversarial imitation learning using 
 
 ### experiment reference
    - experiment 1 : evaluate mean reward using different size state space, and naive vs complex reward function
+   - experiment 2 : testing even smaller objectives
