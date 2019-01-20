@@ -7,3 +7,12 @@ For each of these objectives I train a RL agent and record their actions for man
 
 Then I train an new agent using generative adversarial imitation learning using a discriminator for each objective.
 
+OBJECTIVES:
+   - implement environment and agent : DONE
+   - implement network and learning loop : DONE
+   - figure out reward scheme that solves 1 face of the cube : TODO
+   - train agents to solve each side of the cube : TODO
+   - record all agents actions : TODO
+   - implement GAIL for single objective : TODO
+   - extend with multiple discriminators : TODO
+   - evaluate results
