@@ -12,7 +12,7 @@ We ran both experiments for 20000 runs, with the only differance being some chan
 ### different reward funtions
 The experiments are performed using 2 different reward schemes, the first being :
 
-if the goal face is colored : reward = 100
+if the goal face is colored : reward = 15
 
 if step_size > max : reward is amount of same color blocks in goal face
 
@@ -21,7 +21,7 @@ else reward = 0
 
 And the second reward scheme is :
 
-if the goal face is colored : reward = 100
+if the goal face is colored : reward = 15
 
 else reward = 0
 
