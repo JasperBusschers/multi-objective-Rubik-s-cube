@@ -1,6 +1,6 @@
 # experiment 1
 
-In the first experiment I try to find an efficient way for solving the 1 of the multiple objectives in the rubik's cube.
+In the first experiment I try to find an efficient way for solving one of the multiple objectives in the rubik's cube.
 This objective is coloring 1 predefined face of the cube all the same color.
 
 In these experiments we will look for the best reward scheme and state representation to do this.
