@@ -7,7 +7,7 @@ For each of these objectives I train a RL agent and record their actions for man
 
 Then I train an new agent using generative adversarial imitation learning using a discriminator for each objective.
 
-OBJECTIVES:
+### OBJECTIVES:
    - implement environment and agent : DONE
    - implement network and learning loop : DONE
    - figure out reward scheme that solves 1 face of the cube : TODO
@@ -18,3 +18,7 @@ OBJECTIVES:
    - record the new joint policy :TODO
    - train a new agent to imitate the joint objective and also another objective : TODO
    - evaluate results : TODO
+
+
+### experiment reference
+   - experiment 1 : evaluate mean reward using differnt size state space, and naive vs complex reward function
