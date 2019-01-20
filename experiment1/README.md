@@ -35,6 +35,6 @@ This causes the state space to dramaticly decrease, but also gives the agent an 
 
 
 ### results different state size
-
+![Alt text](https://raw.githubusercontent.com/JasperBusschers/multi-objective-Rubik-s-cube/master/experiment1/Screenshot%20from%202019-01-20%2019-09-07.png  "Title")
 
 ### results different reward function
