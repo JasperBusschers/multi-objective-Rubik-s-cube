@@ -14,5 +14,7 @@ OBJECTIVES:
    - train agents to solve each side of the cube : TODO
    - record all agents actions : TODO
    - implement GAIL for single objective : TODO
-   - extend with multiple discriminators : TODO
+   - train agent using 2 discriminators, imitating 2 expers : TODO
+   - record the new joint policy :TODO
+   - train a new agent to imitate the joint objective and also another objective : TODO
    - evaluate results : TODO
