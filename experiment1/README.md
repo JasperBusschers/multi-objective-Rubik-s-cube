@@ -5,7 +5,7 @@ This objective is coloring 1 predefined face of the cube all the same color.
 
 In these experiments we will look for the best reward scheme and state representation to do this.
 
-We ran both experiments for 2000 runs, with the only differance being some changes in the network to let it support the smaller size.
+We ran both experiments for 20000 runs, with the only differance being some changes in the network to let it support the smaller size.
 
 
 
