@@ -15,4 +15,4 @@ OBJECTIVES:
    - record all agents actions : TODO
    - implement GAIL for single objective : TODO
    - extend with multiple discriminators : TODO
-   - evaluate results
+   - evaluate results : TODO
