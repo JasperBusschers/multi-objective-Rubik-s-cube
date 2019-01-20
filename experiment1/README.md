@@ -31,3 +31,10 @@ In the first run we let the agent observe the whole rubiks cube to make its deci
 While in the second run, the agent could only see the area he was trying to color.
 
 This causes the state space to dramaticly decrease, but also gives the agent an uncomplete representation of the state.
+
+
+
+### results different state size
+
+
+### results different reward function
