@@ -23,10 +23,17 @@ Then I train an new agent using generative adversarial imitation learning using 
 ### alternative objective
 reproducing : https://arxiv.org/abs/1805.07470 with smaller objectives
 approach makes use of autodidactical iterations and monte carlo three search
+define neural network f(s) -> (v,p)
+with V being value of that state and P the probability for each action.
 
 for each training input
-   - generate children
-   - evaluate value and target policy based on maximum value allong children
+   - start from a solved cube
+   - scramble m times
+   - give generated state to f(s)
+   - perform dept 1 BFS
+   - evaluate value of each child
+   - update value to the maximum value of the children, and policy to the action leading to that value
+
    
 
 ### experiment reference
