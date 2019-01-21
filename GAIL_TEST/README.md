@@ -7,6 +7,8 @@ data was collected, starting from a solved cube and randomly performing n action
 
 The reverse action is then stored allong with the state as solution.
 
+see collectdata.py for more information
+
 
 # experiments
 currently experimenting with different step sizes n. To see if I can limit the state space so that a good solution can be found
