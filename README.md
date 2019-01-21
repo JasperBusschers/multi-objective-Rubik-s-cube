@@ -20,6 +20,15 @@ Then I train an new agent using generative adversarial imitation learning using 
    - evaluate results : TODO
 
 
+### alternative objective
+reproducing : https://arxiv.org/abs/1805.07470 with smaller objectives
+approach makes use of autodidactical iterations and monte carlo three search
+
+for each training input
+   - generate children
+   - evaluate value and target policy based on maximum value allong children
+   
+
 ### experiment reference
    - experiment 1 : evaluate mean reward using different size state space, and naive vs complex reward function
    - experiment 2 : testing even smaller objectives
