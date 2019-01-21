@@ -32,3 +32,9 @@ for each training input
 ### experiment reference
    - experiment 1 : evaluate mean reward using different size state space, and naive vs complex reward function
    - experiment 2 : testing even smaller objectives
+
+
+
+### notes to self
+- maybe try Q networks without padding, or fully connencted.
+- For gail dataset, generate every possible goal path for length 2 or 3
