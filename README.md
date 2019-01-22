@@ -22,9 +22,12 @@ Then I train an new agent using generative adversarial imitation learning using 
 
 ### alternative objective
 reproducing : https://arxiv.org/abs/1805.07470 with smaller objectives
-https://github.com/RobotVeraDS/deepcubes c++ to python
 approach makes use of autodidactical iterations and monte carlo three search
+
+https://github.com/RobotVeraDS/deepcubes c++ to python
+
 define neural network f(s) -> (v,p)
+
 with V being value of that state and P the probability for each action.
 
 for each training input
