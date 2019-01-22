@@ -24,7 +24,7 @@ Then I train an new agent using generative adversarial imitation learning using 
 reproducing : https://arxiv.org/abs/1805.07470 with smaller objectives
 approach makes use of autodidactical iterations and monte carlo three search
 
-https://github.com/RobotVeraDS/deepcubes c++ to python
+https://github.com/Ktakuya332C/deepcube c++ to python
 
 define neural network f(s) -> (v,p)
 
